@@ -1,5 +1,5 @@
 var form=document.querySelector("#form");
-var arr=[];
+var arr=JSON.parse(localStorage.getItem("products"))||[];
 
 function Myfun(e){
     e.preventDefault();
