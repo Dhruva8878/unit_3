@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #Member1{
+            border: 1px solid black;
+            height: 50px;
+            width: 50px;
+        }
+        #Member2{
+            border: 1px solid black;
+            height: 50px;
+            width: 50px;
+        }
+        #Member3{
+            border: 1px solid black;
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+   
+</body>
+</html>
+<script>
+     
+    var box=document.createElement("div");
+   box.setAttribute("id","box")
+
+   var div1=document.createElement("div");
+   div1.setAttribute("id","Member1")
+
+   var div2=document.createElement("div");
+   div2.setAttribute("id","Member2")
+
+   var div3=document.createElement("div");
+   div3.setAttribute("id","Member3")
+
+   var btn=document.createElement("button");
+   btn.setAttribute("id","roll");
+   btn.addEventListener("click",function(){
+       invoke(div1,div2,div3)
+   })
+   btn.innerText="ROLL THE DICE"
+
+   box.append(div1,div2,div3)
+   document.querySelector("#main").append(box,btn);
+
+
+   function invoke(d1,d2,d3){
+        let p1=d1.innerText=5;
+        let p2=d2.innerText=5;
+        let p3=d3.innerText=5;
+
+        if(p1>p2 && p1>p3){
+           d1.style.backgroundColor ="green"
+           d1.style.color="white"
+        }
+        if(p2<p1 && p2>p3){
+           d2.style.backgroundColor="yellow";
+           d2.style.color="black"
+        }
+        if(p1>p3 && p2>p3){
+            d3.style.backgroundColor="red";
+            d3.style.color="white"
+        }
+        if(p1==p2 && p2==p3){
+            d1.style.backgroundColor ="blue"
+            d2.style.backgroundColor ="blue"
+            d3.style.backgroundColor ="blue"
+            d1.style.color="white"
+            d2.style.color="white"
+            d3.style.color="white"
+
+        }
+
+       
+   }
+   
+</script>
