@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #inp{
+            width:200px;
+
+        }
+        #movies{
+            width: 206px;
+            height:200px;
+            border: 1px solid black ;
+            overflow: scroll;
+        }
+         #show{
+             width:300px;
+             height: 400px;
+             margin: auto;
+             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+             margin-top: -20px;
+             border-radius: 20px;
+         }
+         #show1{
+             height: 70%;
+             width:100%;
+         }
+         #show1>img{
+             width:100%;
+             height: 100%;
+             border-top-left-radius: 20px;
+             border-top-right-radius: 20px;
+
+         }
+         #show2{
+            height: 30%;
+             width:100%;
+             text-align: center;
+         }
+    </style>
+</head>
+<body>
+    <input oninput="debounce(search,1000)" type="text" id="inp">
+    <div id="movies"></div>
+
+    <div id="show">
+        <div id="show1"></div>
+        <div id="show2"></div>
+    </div>
+</body>
+</html>
+
+<!-- // http://www.omdbapi.com/?s=${data}&apikey=8c8b4d00& -->
+<script>
+    let id;
+
+let Movies=document.querySelector("#movies");
+let show1=document.querySelector("#show1");
+let show2=document.querySelector("#show2");
+let show=document.querySelector("#show")
+
+    async function movies(d){
+    
+    try{
+        let url=`http://www.omdbapi.com/?s=${d}&apikey=8c8b4d00&`;
+
+        let res=await fetch(url);
+
+        let data=await res.json();
+        return data.Search
+    }
+    catch(err){
+        console.log(err)
+    }
+}    
+
+
+
+ async function search(){
+        let query=document.querySelector("#inp").value;
+
+      let M=movies(query)
+      
+      let data=await M
+
+      appmovies(data);
+    }
+
+
+function appmovies(movies){
+  Movies.innerHTML=null;
+  if(movies==undefined){
+      return false
+  }
+  movies.forEach(function(el){
+      let p=document.createElement("p");
+      p.innerText=el.Title;
+      p.addEventListener("click",function(){
+          showmovies(el)
+
+      })
+
+    
+     Movies.append(p);
+  })
+     
+   } 
+   
+ function debounce(func,delay){
+
+    if(id){
+        clearInterval(id)
+    }
+
+    id=setTimeout(function(){
+     func()
+    },delay)
+ }  
+   
+   
+function showmovies(el){
+    show1.innerHTML=null;
+    show2.innerHTML=null;
+
+   let img=document.createElement("img");
+   img.src=el.Poster;
+
+   let name=document.createElement("h2")
+   name.innerText=el.Title;
+
+   let yor=document.createElement("p")
+   yor.innerText=el.Year
+
+   let rating=document.createElement("p");
+   rating.innerText=el.imdbID
+
+   console.log(el);
+
+   show1.append(img);
+   show2.append(name,yor,rating);
+
+} 
+
+
+</script>
