@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/a800b18a23.js" crossorigin="anonymous"></script>
+        <style>
+        *{
+            font-family: sans-serif;
+        }
+        .gmap_canvas {
+            overflow:hidden;
+            background:none!important;
+           height:100%;
+           width:100%;
+        }
+        #web{
+            width:100%;
+            height: 800px;
+            background-color: rgb(34,59,98) ;
+        }
+        #nav{
+             width:100%;
+             height:50px;
+             background-color: rgb(54,78,112);
+             box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+             
+        }
+        #nav>input,button{
+            margin-top: 12px;
+            margin-left: 20px;
+            padding:8px 20px;
+            border-radius: 10px;
+        }
+        #container{
+            width:80%;
+            height: 350px;
+            margin: auto;
+            margin-top: 40px;
+            display: flex;
+        }
+        #main{
+            width:60%;
+            height:95%;
+            border: 2px solid white;
+            margin: auto;
+            background-image: url("https://images.unsplash.com/photo-1505506874110-6a7a69069a08?ixlib=rb-1.2.1&raw_url=true&q=60&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=400");
+            background-size: contain;
+        }
+        #main2{
+            width:35%;
+            height:95%;
+            border: 2px solid white;
+            margin: auto;
+        }
+        #gmap_canvas{
+            width:100%;
+            height: 330px
+        }
+        #h21{
+            width: 80%;
+            height:30px;
+            margin: auto;
+        }
+        #h2{
+            color: beige;
+        }
+        #h2:hover{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        #m1{
+            width:100%;
+            height:18%;
+        }
+        #m2{
+            width:100%;
+            height: 40%;
+            display: flex;
+        }
+        #m3{
+            width: 100%;
+            height:15%;
+        }
+        #m4{
+            width:100%;
+            height: 25%;
+            display: flex;
+        }
+        #m1>p{
+            color:antiquewhite
+        }
+        #m2a>i{
+            color:yellow;
+            font-size: 90px;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        #m2a{
+            display: flex;
+        }
+        #m2b{
+            font-size: 60px;
+            color: antiquewhite;
+            margin-top: -30px;
+        }
+        #m2c>p{
+            font-size: 20px;
+            color: aliceblue;
+            margin-left: 20px;
+            margin-top: 40px;
+        }
+        #m2c>p+p{
+            margin-top: -12px;
+        }
+        #m3>p{
+            color:white;
+            display: inline;
+        }
+        #m4>div{
+             width:25%;
+             height: 100%;
+
+        }
+        #m4a>p{
+            color:white;
+            text-align: center;
+        }
+        #m4a>p:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        #m4b>p{
+            color:white;
+            text-align: center;
+        }
+        #m4b>p:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        #m4c>p{
+            color:white;
+            text-align: center;
+        }
+        #m4c>p:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        #m4d>p{
+            color:white;
+            text-align: center;
+        }
+        #m4d>p:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        #main3{
+            display: grid;
+            grid-template-columns: repeat(7,1fr);
+            width:80%;
+            margin: auto;
+            height: 200px;
+            margin-top: 20px;
+            background-color: rgb(40,40,40);
+           border-radius: 10px;
+        }
+        #main3>div{
+            border: 1px solid gray;
+           text-align: center;
+        }
+        #main3>div>p{
+            color: white;
+            font-size: 20px;
+        }
+        #main3>div>i{
+            color: yellow;
+            font-size: 20px;
+        }
+        
+        #main3>div:hover{
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+
+     </style>
+           
+
+</head>
+<body>
+    <div id="web">
+    
+        <div id="nav">
+            <input type="text" id="city" placeholder="Search City Here">
+            <button onclick="searchdata()">Search</button>
+        </div>
+        <div id="h21" ><h2 id="h2"></h2></div>
+ 
+
+        <div id="container">
+            <div id="main">
+            <div id="m1">
+                <p>CURRENT WHEATHER</p>
+            </div>
+            <div id="m2">
+                <div id="m2a">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+                <div id="m2b"></div>
+                <div id="m2c"></div>
+            </div>
+            <div id="m3"></div>
+            <div id="m4">
+                <div id="m4a"></div>
+                <div id="m4b"></div>
+                <div id="m4c"></div>
+                <div id="m4d"></div>
+            </div>
+            </div>
+            <div id="main2">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="600"
+                         height="500"
+                          id="gmap_canvas"
+                           frameborder="0"
+                            scrolling="no"
+                             marginheight="0"
+                              marginwidth="0">
+                            </iframe>
+                        </div>
+                    </div>
+            </div>
+        </div>
+   
+   
+       <div id="main3">
+        <div>
+            <p>Monday</p>
+            <i class="fa-solid fa-cloud-sun"></i>
+            <p>32c</p>
+            <p>26c</p>
+        </div>
+        <div>
+            <p>Tuesday</p>
+            <i class="fa-solid fa-sun"></i>
+            <p>36c</p>
+            <p>24c</p>
+        </div>
+        <div>
+            <p>Wednesday</p>
+            <i class="fa-solid fa-mountain-sun"></i>
+            <p>38c</p>
+            <p>29c</p>
+        </div>
+        <div>
+            <p>Thursday</p>
+            <i class="fa-solid fa-cloud-sun-rain"></i>
+            <p>37c</p>
+            <p>26c</p>
+        </div>
+        <div>
+            <p>Friday</p>
+            <i class="fa-solid fa-mountain-sun"></i>
+            <p>40c</p>
+            <p>29c</p>
+        </div>
+        <div>
+            <p>Saturday</p>
+            <i class="fa-solid fa-sun"></i>
+            <p>39c</p>
+            <p>25c</p>
+        </div>
+        <div>
+            <p>Sunday</p>
+            <i class="fa-solid fa-cloud-sun"></i>
+            <p>32c</p>
+            <p>26c</p>
+        </div>
+    </div> 
+ </div>
+</body>
+</html>
+<script src="./fetch.js"></script>
