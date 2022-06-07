@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/a800b18a23.js" crossorigin="anonymous"></script>
+
+    <style>
+        #nav{
+            display: flex;
+            width:90%;
+            height: 60px;
+            justify-content: space-between;
+            margin: auto;
+        }
+        #nav>div:nth-child(1){
+            display: flex;
+            width:25%;
+            height: 100%;
+        }
+        #nav>div:nth-child(1)>i{
+            margin-top: 10px;
+            margin-right:8px;
+            font-size: 30px;
+            color: red;
+        }
+        #nav>div:nth-child(2){
+            width:45%;
+            height: 100%;
+        }
+        #query{
+            width: 75%;
+            height:50%;
+            margin-top: 10px;
+        }
+        #sub{
+            height:50%;
+            margin-top: 10px;
+        }
+        #nav>div:nth-child(2)>i{
+            margin-left: 20px;
+            font-size: 20px;
+        }
+        #nav>div:nth-child(3){
+           width:20%;
+           height: 100%;
+        }
+        #nav>div:nth-child(3)>i{
+            margin-top: 15px;
+            margin-left: 25px;
+            font-size: 20px;
+        }
+        i:hover{
+            cursor: pointer;
+        }
+
+        #main{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:30px;
+            width:80%;
+            margin: auto;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div id="nav">
+        <div>
+            <i class="fa-brands fa-youtube"></i>
+            <p>YouTube</p>
+        </div>
+        <div>
+            <input id="query" type="text" placeholder="Enter Movie Name">
+        <input id="sub" type="submit" onclick="youtube()">
+        <i class="fa-solid fa-microphone"></i>
+        </div>
+        <div>
+            <i class="fa-solid fa-video"></i>
+            <i class="fa-solid fa-cubes-stacked"></i>
+            <i class="fa-regular fa-bell"></i>
+            <i class="fa-solid fa-user"></i>
+        </div>
+        
+    </div>
+
+    <div id="main">
+
+    </div>
+   
+    
+</body>
+</html>
+
+<script src="./Es6.js"></script>
