@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/navbar.css">
+    <style>
+        #main{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:30px;
+            width:80%;
+            margin: auto;
+            margin-top: 40px;
+        }
+        #box>img{
+            width:100%;
+
+        }
+        #box{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="main"></div>
+</body>
+</html>
+
+
+<script type="module">
+    import navbar from "./scripts/navbar.js"
+    
+    let nav=document.querySelector("#navbar")
+    nav.innerHTML=navbar();
+
+
+    let main=document.querySelector("#main");   
+    
+    let myfun=async()=>{
+        let url=`https://themealdb.com/api/json/v1/1/search.php?s=soup`
+
+        let res=await fetch(url);
+        let data=await res.json();
+            data=data.meals
+            append2(data);
+    
+    }
+
+
+let append2=(data)=>{
+
+    console.log(data)
+    data.forEach((el)=>{
+
+        let box=document.createElement("div");
+    box.setAttribute("id","box");
+
+    let img=document.createElement("img");
+    img.src=el.strMealThumb;
+
+    let cat=document.createElement("h3");
+    cat.innerText=el.strCategory;
+
+    let disname=document.createElement("h2");
+    disname.innerText=el.strMeal;    
+
+    box.append(img,cat,disname);
+    main.append(box);
+
+    })
+}
+    
+myfun()
+
+
+</script>

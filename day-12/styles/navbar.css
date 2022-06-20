@@ -1,0 +1,19 @@
+#navbar{
+    display: flex;
+    width:90%;
+    margin: auto;
+    height: 50px;
+    border: 1px solid;
+    justify-content: space-between;
+}
+#rs{
+    width:50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+#ls{
+    width:50%;
+    height: 100%;
+    display: flex;
+}

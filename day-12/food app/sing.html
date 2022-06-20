@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/navbar.css">
+
+    <style>
+        #opt{
+            width:30%;
+            height: 300px;
+            margin: auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #form>input{
+            margin-top:20px ;
+            width:250px;
+            height: 30px;
+        }
+     </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="opt">
+        <form id="form">
+            <input id="name" type="text" placeholder="Enter Name">
+            <br>
+            <input id="email" type="text" placeholder="Enter Email">
+            <br>
+            <input id="btn" type="submit" value="Submit Details" onclick="signupdata(event)">
+        </form>`
+    </div>
+</body>
+</html>
+
+
+
+<script type="module">
+    import navbar from "./scripts/navbar.js"
+    
+    let nav=document.querySelector("#navbar")
+    nav.innerHTML=navbar();
+
+
+
+</script>
+<script src="./scripts/sing.js"></script>

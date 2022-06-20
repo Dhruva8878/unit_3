@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+</head>
+<body>
+    <div id="navbar">
+        <!-- <div id="ls">
+            <h3><a href="./home.html">Home</a></h3>
+        </div>
+        <div id="rs">
+           <h3> <a href="./jewellary.html">jewellary</a></h3>
+           <h3> <a href="./electronics.html">Electronics</a></h3>
+           <h3> <a href="#">Login</a></h3>
+           <h3> <a href="#">SingUp</a></h3>
+        </div> -->
+    </div>
+    <h3>Home</h3>
+</body>
+</html>
+
+<script type="module">
+    import navbar from "./scripts/navbar.js"
+
+    let nav=document.querySelector("#navbar")
+    nav.innerHTML=navbar();
+    console.log(navbar);
+</script>

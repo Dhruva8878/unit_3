@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/navbar.css">
+    <style>
+        #sea{
+            width:30%;
+            margin: auto;
+            text-align: center;
+            margin-top: 30px;
+        }
+        #menu{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:20px;
+            width:80%;
+            margin: auto;
+            margin-top: 40px;
+
+        }
+        #box>img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="sea">
+        <input oninput="main()" id="dish" type="text" placeholder="Enter dish name">
+       
+    </div>
+    <div id="menu"></div>
+    
+    
+</body>
+</html>
+
+<script type="module">
+  
+  import navbar from "./scripts/navbar.js"
+  import {getdata,append} from "./scripts/append.js"
+
+  let nav=document.querySelector("#navbar");
+  nav.innerHTML=navbar();
+
+
+  main()
+  async function main(){
+      var dish_name =document.getElementById('dish').value;
+   let url=`https://themealdb.com/api/json/v1/1/search.php?s=${dish_name}`
+
+      let data = await getdata(url)
+      console.log(data)
+      if(data==undefined){
+          return false
+      }
+      let menu=document.querySelector("#menu");
+      menu.innerHTML=''
+      append(data,menu);
+
+  }
+   
+
+ 
+
+  let e =document.getElementById('dish')
+  e.oninput= debounce;
+
+  let timerid;
+  function debounce(){
+      if(timerid){
+          clearTimeout(timerid)
+      }
+      timerid=setTimeout(function(){
+          main()
+      },1000)
+  }
+//   let dish=document.querySelector("#dish").value;
+
+
+// let url=`https://themealdb.com/api/json/v1/1/search.php?s=${dish}`
+// let btn=document.querySelector("#btn");
+// btn.addEventListener("click",()=>{
+//     getdata(url)
+// })
+
+// let menu=document.querySelector("#menu");
+
+
+// let latest=`https://themealdb.com/api/json/v1/1/search.php?s=`
+
+// let receipe of the day=`https://themealdb.com/api/json/v1/1/random.php`
+
+
+// let data=await getdata(url2);
+
+// append(data,menu);
+ 
+</script>
+
+
+
